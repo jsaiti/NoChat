@@ -243,7 +243,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
         
         static let timeFont = UIFont.systemFont(ofSize: 12)
         static let outgoingTimeColor = UIColor(colorLiteralRed: 59/255.0, green: 171/255.0, blue: 61/255.0, alpha: 1)
-        static let incomingTimeColor = UIColor.gray
+        static let incomingTimeColor = UIColor.lightText
         static let timeFormatter: DateFormatter = {
             let df = DateFormatter()
             df.locale = Locale(identifier: "en_US")
