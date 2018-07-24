@@ -480,8 +480,6 @@
 				E09B247F1E0E322E00E9345B /* Sources */,
 				E09B24801E0E322E00E9345B /* Frameworks */,
 				E09B24811E0E322E00E9345B /* Resources */,
-				E10A743732B9D0FC0B7DC197 /* [CP] Embed Pods Frameworks */,
-				FDE115F8456AA97B5F3C01C1 /* [CP] Copy Pods Resources */,
 				E065743E1E38DA1C00D2FBB2 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -504,7 +502,7 @@
 				TargetAttributes = {
 					E09B24821E0E322E00E9345B = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = YGG9VRRGFV;
+						DevelopmentTeam = E429FE385G;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -549,43 +547,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NoChat-Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E10A743732B9D0FC0B7DC197 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoChat-Example/Pods-NoChat-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FDE115F8456AA97B5F3C01C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoChat-Example/Pods-NoChat-Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -749,7 +720,7 @@
 			baseConfigurationReference = 5F4683890547AED21B7FE846 /* Pods-NoChat-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YGG9VRRGFV;
+				DEVELOPMENT_TEAM = E429FE385G;
 				INFOPLIST_FILE = "NoChat-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.little2s.NoChat-Example";
@@ -762,7 +733,7 @@
 			baseConfigurationReference = 87D54D4AE83B6A71EC459EBB /* Pods-NoChat-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YGG9VRRGFV;
+				DEVELOPMENT_TEAM = E429FE385G;
 				INFOPLIST_FILE = "NoChat-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.little2s.NoChat-Example";

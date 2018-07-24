@@ -41,6 +41,8 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
     
     private var attributedText: NSMutableAttributedString?
     
+    private var offset:CGFloat = 80.0
+    
     required init(chatItem: NOCChatItem, cellWidth width: CGFloat) {
         super.init(chatItem: chatItem, cellWidth: width)
         reuseIdentifier = "TGTextMessageCell"
@@ -161,7 +163,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
                 var y = textMargin.top + textLabelHeight
                 
                 y += vPadding
-                timeLabelFrame = CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight)
+                timeLabelFrame = isOutgoing ? CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight) : CGRect(x: x + offset, y: y, width: timeLabelWidth, height: timeLabelHeight)
                 
                 x += timeLabelWidth + hPadding/2
                 deliveryStatusViewFrame = CGRect(x: x, y: y, width: deliveryStatusWidth, height: deliveryStatusHeight)
@@ -169,17 +171,17 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
                 bubbleViewHeight = textMargin.top + textLabelHeight + vPadding + timeLabelHeight + textMargin.bottom
                 bubbleViewFrame = isOutgoing ? CGRect(x: width - bubbleViewMargin.right - bubbleViewWidth, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight) : CGRect(x: bubbleViewMargin.left, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight)
                 
-                bubbleImageViewFrame = CGRect(x: 0, y: 0, width: bubbleViewWidth, height: bubbleViewHeight)
+                    bubbleImageViewFrame = isOutgoing ? CGRect(x: 0, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight) : CGRect(x: -offset, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight)
                 
             } else {
                 bubbleViewHeight = textLabelHeight + textMargin.top + textMargin.bottom
                 bubbleViewFrame = isOutgoing ? CGRect(x: width - bubbleViewMargin.right - bubbleViewWidth, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight) : CGRect(x: bubbleViewMargin.left, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight)
                 
-                bubbleImageViewFrame = CGRect(x: 0, y: 0, width: bubbleViewWidth, height: bubbleViewHeight)
+                bubbleImageViewFrame = isOutgoing ? CGRect(x: 0, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight) : CGRect(x: -offset, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight)
                 
                 var x = bubbleViewWidth - textMargin.right - deliveryStatusWidth - hPadding/2 - timeLabelWidth
                 let y = bubbleViewHeight - textMargin.bottom - timeLabelHeight
-                timeLabelFrame = CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight)
+                timeLabelFrame = isOutgoing ? CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight) : CGRect(x: x + offset, y: y, width: timeLabelWidth, height: timeLabelHeight)
                 
                 x += timeLabelWidth + hPadding/2
                 deliveryStatusViewFrame = CGRect(x: x, y: y, width: deliveryStatusWidth, height: deliveryStatusHeight)
@@ -194,7 +196,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
             bubbleViewHeight = textLabelHeight + textMargin.top + textMargin.bottom
             bubbleViewFrame = isOutgoing ? CGRect(x: width - bubbleViewMargin.right - bubbleViewWidth, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight) : CGRect(x: bubbleViewMargin.left, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight)
             
-            bubbleImageViewFrame = CGRect(x: 0, y: 0, width: bubbleViewWidth, height: bubbleViewHeight)
+            bubbleImageViewFrame = isOutgoing ? CGRect(x: 0, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight) : CGRect(x: -offset, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight)
             
             var x = textMargin.left
             var y = textMargin.top
@@ -202,7 +204,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
             
             x += textLabelWidth + hPadding
             y = bubbleViewHeight - textMargin.bottom - timeLabelHeight
-            timeLabelFrame = CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight)
+            timeLabelFrame = isOutgoing ? CGRect(x: x, y: y, width: timeLabelWidth, height: timeLabelHeight) : CGRect(x: x + offset, y: y, width: timeLabelWidth, height: timeLabelHeight)
             
             x += timeLabelWidth + hPadding/2
             deliveryStatusViewFrame = CGRect(x: x, y: y, width: deliveryStatusWidth, height: deliveryStatusHeight)
@@ -213,21 +215,30 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
     
     
     struct Style {
-        static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFull")!
+//        static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFull")!
         static let highlightFullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFullHL")!
-        static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartial")!
+//        static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartial")!
         static let highlightPartialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartialHL")!
-        static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFull")!
+
+//        static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFull")!
         static let highlightFullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFullHL")!
-        static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartial")!
+//        static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartial")!
         static let highlightPartialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartialHL")!
+
+        static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFullRed")!
+        static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartialRed")!
+
+        static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFullBlack")!
+        static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartialBlack")!
+
 
         static var textFont: UIFont {
             return UIFont.preferredFont(forTextStyle: .body)
         }
-        static let textColor = UIColor.black
+        static let textColor = UIColor.white
         
-        static let linkColor = UIColor(colorLiteralRed: 0/255.0, green: 75/255.0, blue: 173/255.0, alpha: 1)
+        //static let linkColor = UIColor(colorLiteralRed: 0/255.0, green: 75/255.0, blue: 173/255.0, alpha: 1)
+        static let linkColor = UIColor(red: 0/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1)
         static let linkBackgroundColor = UIColor(colorLiteralRed: 191/255.0, green: 223/255.0, blue: 254/255.0, alpha: 1)
         
         static let timeFont = UIFont.systemFont(ofSize: 12)
