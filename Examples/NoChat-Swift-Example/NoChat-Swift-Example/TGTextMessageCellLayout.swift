@@ -117,7 +117,8 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
         let timeLabelWidth = timeLabelSize.width
         let timeLabelHeight = CGFloat(15)
         
-        let deliveryStatusWidth: CGFloat = (isOutgoing && message.deliveryStatus != .Failure) ? 15 : 0
+        let deliveryStatusWidth: CGFloat = 0
+        //        let deliveryStatusWidth: CGFloat = (isOutgoing && message.deliveryStatus != .Failure) ? 15 : 0
         let deliveryStatusHeight = deliveryStatusWidth
         
         let hPadding = CGFloat(8)
@@ -171,7 +172,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
                 bubbleViewHeight = textMargin.top + textLabelHeight + vPadding + timeLabelHeight + textMargin.bottom
                 bubbleViewFrame = isOutgoing ? CGRect(x: width - bubbleViewMargin.right - bubbleViewWidth, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight) : CGRect(x: bubbleViewMargin.left, y: bubbleViewMargin.top, width: bubbleViewWidth, height: bubbleViewHeight)
                 
-                    bubbleImageViewFrame = isOutgoing ? CGRect(x: 0, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight) : CGRect(x: -offset, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight)
+                bubbleImageViewFrame = isOutgoing ? CGRect(x: 0, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight) : CGRect(x: -offset, y: 0, width: bubbleViewWidth + offset, height: bubbleViewHeight)
                 
             } else {
                 bubbleViewHeight = textLabelHeight + textMargin.top + textMargin.bottom
@@ -215,23 +216,23 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
     
     
     struct Style {
-//        static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFull")!
+        //        static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFull")!
         static let highlightFullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFullHL")!
-//        static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartial")!
+        //        static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartial")!
         static let highlightPartialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartialHL")!
-
-//        static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFull")!
+        
+        //        static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFull")!
         static let highlightFullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFullHL")!
-//        static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartial")!
+        //        static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartial")!
         static let highlightPartialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartialHL")!
-
+        
         static let fullIncomingBubbleImage = UIImage(named: "TGBubbleIncomingFullRed")!
         static let partialIncomingBubbleImage = UIImage(named: "TGBubbleIncomingPartialRed")!
-
+        
         static let fullOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingFullBlack")!
         static let partialOutgoingBubbleImage = UIImage(named: "TGBubbleOutgoingPartialBlack")!
-
-
+        
+        
         static var textFont: UIFont {
             return UIFont.preferredFont(forTextStyle: .body)
         }
@@ -239,10 +240,11 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
         
         //static let linkColor = UIColor(colorLiteralRed: 0/255.0, green: 75/255.0, blue: 173/255.0, alpha: 1)
         static let linkColor = UIColor(red: 0/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1)
-        static let linkBackgroundColor = UIColor(colorLiteralRed: 191/255.0, green: 223/255.0, blue: 254/255.0, alpha: 1)
+        static let linkBackgroundColor = UIColor(red: 191/255.0, green: 223/255.0, blue: 254/255.0, alpha: 1)
         
         static let timeFont = UIFont.systemFont(ofSize: 12)
-        static let outgoingTimeColor = UIColor(colorLiteralRed: 59/255.0, green: 171/255.0, blue: 61/255.0, alpha: 1)
+        //        static let outgoingTimeColor = UIColor(red: 59/255.0, green: 171/255.0, blue: 61/255.0, alpha: 1)
+        static let outgoingTimeColor = UIColor.lightText
         static let incomingTimeColor = UIColor.lightText
         static let timeFormatter: DateFormatter = {
             let df = DateFormatter()
@@ -291,7 +293,7 @@ class TGTextLinePositionModifier: NSObject, YYTextLinePositionModifier {
         one.lineHeightMultiple = lineHeightMultiple
         return one
     }
-
+    
     fileprivate func height(forLineCount lineCount: UInt) -> CGFloat {
         if lineCount == 0 {
             return 0

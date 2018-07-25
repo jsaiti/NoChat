@@ -61,7 +61,7 @@ class TGTextMessageCell: TGBaseMessageCell {
         
         bubbleImageView.addSubview(timeLabel)
         
-        bubbleImageView.addSubview(deliveryStatusView)
+//        bubbleImageView.addSubview(deliveryStatusView)
     }
     
     required init?(coder aDecoder: NSCoder) {
