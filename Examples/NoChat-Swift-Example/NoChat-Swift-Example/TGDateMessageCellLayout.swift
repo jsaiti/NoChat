@@ -79,7 +79,7 @@ class TGDateMessageCellLayout: NSObject, NOCChatItemCellLayout {
     
     private func setupAttributedDate() {
         let dateString = Style.dateFormatter.string(from: message.date)
-        let one = NSAttributedString(string: dateString, attributes: [NSFontAttributeName: Style.dateFont, NSForegroundColorAttributeName: Style.dateColor])
+        let one = NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: Style.dateFont, NSAttributedStringKey.foregroundColor : Style.dateColor])
         attributedDate = one
     }
     

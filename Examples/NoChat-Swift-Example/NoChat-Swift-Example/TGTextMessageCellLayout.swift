@@ -55,7 +55,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
     
     private func setupAttributedText() {
         let text = message.text
-        let attributedText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName: Style.textFont, NSForegroundColorAttributeName: Style.textColor])
+        let attributedText = NSMutableAttributedString(string: text, attributes: [NSAttributedStringKey.font: Style.textFont, NSAttributedStringKey.foregroundColor: Style.textColor])
         
         if text == "/start" {
             attributedText.yy_setColor(Style.linkColor, range: attributedText.yy_rangeOfAll())
@@ -78,7 +78,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
     private func setupAttributedTime() {
         let timeString = Style.timeFormatter.string(from: message.date)
         let timeColor = isOutgoing ? Style.outgoingTimeColor : Style.incomingTimeColor
-        attributedTime = NSAttributedString(string: timeString, attributes: [NSFontAttributeName: Style.timeFont, NSForegroundColorAttributeName: timeColor])
+        attributedTime = NSAttributedString(string: timeString, attributes: [NSAttributedStringKey.font: Style.timeFont, NSAttributedStringKey.foregroundColor: timeColor])
     }
     
     private func setupHasTail() {
@@ -106,7 +106,7 @@ class TGTextMessageCellLayout: TGBaseMessageCellLayout {
         
         // dynamic font support
         let dynamicFont = Style.textFont
-        text.yy_setAttribute(NSFontAttributeName, value: dynamicFont)
+        text.yy_setAttribute(NSAttributedStringKey.font.rawValue, value: dynamicFont)
         
         let preferredMaxBubbleWidth = ceil(width * 0.75)
         var bubbleViewWidth = preferredMaxBubbleWidth

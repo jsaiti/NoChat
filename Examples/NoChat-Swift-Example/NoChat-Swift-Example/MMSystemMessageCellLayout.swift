@@ -79,7 +79,7 @@ class MMSystemMessageCellLayout: NSObject, NOCChatItemCellLayout {
     
     private func setupAttributedText() {
         let text = message.text
-        let one = NSAttributedString(string: text, attributes: [NSFontAttributeName: Style.textFont, NSForegroundColorAttributeName: Style.textColor])
+        let one = NSAttributedString(string: text, attributes: [NSAttributedStringKey.font: Style.textFont, NSAttributedStringKey.foregroundColor: Style.textColor])
         attributedText = one
     }
     

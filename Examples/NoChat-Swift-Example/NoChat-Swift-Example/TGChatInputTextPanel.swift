@@ -57,13 +57,13 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
     private var keyboardHeight = CGFloat(0)
     
     override init(frame: CGRect) {
-        sendButtonWidth = min(150, (NSLocalizedString("Send", comment: "") as NSString).size(attributes: [NSFontAttributeName: UIFont.noc_mediumSystemFont(ofSize: 17)]).width + 8)
+        sendButtonWidth = min(150, (NSLocalizedString("Send", comment: "") as NSString).size(withAttributes: [NSAttributedStringKey.font: UIFont.noc_mediumSystemFont(ofSize: 17)]).width + 8)
         
         backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(colorLiteralRed: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
+        backgroundView.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 1)
         
         stripeLayer = CALayer()
-        stripeLayer.backgroundColor = UIColor(colorLiteralRed: 179/255.0, green: 170/255.0, blue: 178/255.0, alpha: 1).cgColor
+        stripeLayer.backgroundColor = UIColor(red: 179/255.0, green: 170/255.0, blue: 178/255.0, alpha: 1).cgColor
         
         let filedBackgroundImage = UIImage(named: "TGInputFieldBackground")!
         fieldBackground = UIImageView(image: filedBackgroundImage)
@@ -89,8 +89,8 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         sendButton = UIButton(type: .system)
         sendButton.isExclusiveTouch = true
         sendButton.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
-        sendButton.setTitleColor(UIColor(colorLiteralRed: 0/255.0, green: 126/255.0, blue: 229/255.0, alpha: 1), for: .normal)
-        sendButton.setTitleColor(UIColor(colorLiteralRed: 142/255.0, green: 142/255.0, blue: 147/255.0, alpha: 1), for: .disabled)
+        sendButton.setTitleColor(UIColor(red: 0/255.0, green: 126/255.0, blue: 229/255.0, alpha: 1), for: .normal)
+        sendButton.setTitleColor(UIColor(red: 142/255.0, green: 142/255.0, blue: 147/255.0, alpha: 1), for: .disabled)
         sendButton.titleLabel?.font = UIFont.noc_mediumSystemFont(ofSize: 17)
         sendButton.isEnabled = false
         sendButton.isHidden = true
@@ -236,7 +236,7 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         toggleSendButtonEnabled()
     }
     
-    func didTapSendButton(_ sender: UIButton) {
+    @objc func didTapSendButton(_ sender: UIButton) {
         guard let text = inputField.internalTextView.text else {
             return
         }

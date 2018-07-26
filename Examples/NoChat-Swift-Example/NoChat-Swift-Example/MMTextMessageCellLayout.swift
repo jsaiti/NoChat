@@ -47,7 +47,7 @@ class MMTextMessageCellLayout: MMBaseMessageCellLayout {
     
     private func setupAttributedText() {
         let text = message.text
-        let attributedText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName: Style.textFont, NSForegroundColorAttributeName: Style.textColor])
+        let attributedText = NSMutableAttributedString(string: text, attributes: [NSAttributedStringKey.font: Style.textFont, NSAttributedStringKey.foregroundColor: Style.textColor])
         
         if text == "/start" {
             attributedText.yy_setColor(Style.linkColor, range: attributedText.yy_rangeOfAll())
@@ -88,7 +88,7 @@ class MMTextMessageCellLayout: MMBaseMessageCellLayout {
         
         // dynamic font support
         let dynamicFont = Style.textFont
-        text.yy_setAttribute(NSFontAttributeName, value: dynamicFont)
+        text.yy_setAttribute(NSAttributedStringKey.font.rawValue, value: dynamicFont)
         
         let preferredMaxBubbleWidth = ceil(width * 0.68)
         var bubbleViewWidth = preferredMaxBubbleWidth
@@ -133,8 +133,8 @@ class MMTextMessageCellLayout: MMBaseMessageCellLayout {
         }
         static let textColor = UIColor.black
         
-        static let linkColor = UIColor(colorLiteralRed: 31/255.0, green: 121/255.0, blue: 253/255.0, alpha: 1)
-        static let linkBackgroundColor = UIColor(colorLiteralRed: 212/255.0, green: 209/255.0, blue: 209/255.0, alpha: 1)
+        static let linkColor = UIColor(red: 31/255.0, green: 121/255.0, blue: 253/255.0, alpha: 1)
+        static let linkBackgroundColor = UIColor(red: 212/255.0, green: 209/255.0, blue: 209/255.0, alpha: 1)
     }
     
 }
