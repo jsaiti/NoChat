@@ -85,6 +85,7 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         inputField.internalTextView.isOpaque = false
         inputField.internalTextView.contentMode = .left
         inputField.internalTextView.scrollIndicatorInsets = UIEdgeInsets(top: -inputFiledInternalEdgeInsets.top, left: 0, bottom: 5 - TGRetinaPixel, right: 0)
+
         
         sendButton = UIButton(type: .system)
         sendButton.isExclusiveTouch = true
@@ -107,7 +108,7 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         
         addSubview(backgroundView)
         layer.addSublayer(stripeLayer)
-        addSubview(fieldBackground)
+//        addSubview(fieldBackground)
         addSubview(inputFiledClippingContainer)
         
         inputField.maxNumberOfLines = maxNumberOfLines(forSize: parentSize)
@@ -117,8 +118,8 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         sendButton.addTarget(self, action: #selector(didTapSendButton(_:)), for: .touchUpInside)
         
         addSubview(sendButton)
-        addSubview(attachButton)
-        addSubview(micButton)
+//        addSubview(attachButton)
+//        addSubview(micButton)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -132,7 +133,9 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         
         stripeLayer.frame = CGRect(x: 0, y: -TGRetinaPixel, width: bounds.width, height: TGRetinaPixel)
         
-        fieldBackground.frame = CGRect(x: inputFiledInsets.left, y: inputFiledInsets.top, width: bounds.width - inputFiledInsets.left - inputFiledInsets.right - sendButtonWidth - 1, height: bounds.height - inputFiledInsets.top - inputFiledInsets.bottom)
+//        fieldBackground.frame = CGRect(x: inputFiledInsets.left, y: inputFiledInsets.top, width: bounds.width - inputFiledInsets.left - inputFiledInsets.right - sendButtonWidth - 1, height: bounds.height - inputFiledInsets.top - inputFiledInsets.bottom)
+        
+        fieldBackground.frame = CGRect(x: 10, y: inputFiledInsets.top, width: bounds.width - inputFiledInsets.right - sendButtonWidth - 11, height: bounds.height - inputFiledInsets.top - inputFiledInsets.bottom)
         
         inputFiledClippingContainer.frame = fieldBackground.frame
         
@@ -210,7 +213,7 @@ class TGChatInputTextPanel: NOCChatInputPanel, HPGrowingTextViewDelegate {
         let hasText = inputField.internalTextView.hasText
         sendButton.isEnabled = hasText
         sendButton.isHidden = !hasText
-        micButton.isHidden = hasText
+//        micButton.isHidden = hasText
     }
     
     func clearInputField() {

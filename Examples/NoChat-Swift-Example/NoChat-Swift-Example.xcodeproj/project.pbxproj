@@ -232,12 +232,12 @@
 		E018A5781E4A19830034B376 /* Telegram */ = {
 			isa = PBXGroup;
 			children = (
-				E018A57D1E4A19B20034B376 /* Title View */,
 				E018A57C1E4A19AB0034B376 /* Avatar Button */,
 				E018A57B1E4A19A60034B376 /* Cell */,
 				E018A57A1E4A199F0034B376 /* Input Panel */,
 				E018A5791E4A19960034B376 /* Progress View */,
 				E021C4351E51C9DA003A2EA1 /* TGChatViewController.swift */,
+				E018A57D1E4A19B20034B376 /* Title View */,
 			);
 			name = Telegram;
 			sourceTree = "<group>";
@@ -262,9 +262,9 @@
 		E018A57B1E4A19A60034B376 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E018A5831E4A1A030034B376 /* Base */,
 				E018A5851E4A1A0B0034B376 /* Date */,
 				E018A5841E4A1A070034B376 /* System */,
-				E018A5831E4A1A030034B376 /* Base */,
 				E018A5821E4A19FE0034B376 /* Text */,
 			);
 			name = Cell;
